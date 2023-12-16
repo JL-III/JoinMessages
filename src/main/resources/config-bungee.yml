@@ -1,6 +1,6 @@
 GlobalJoinMessage:
   Enabled: true
-  Message: '&6[&a+&6] &6[&bGLOBAL&6] %player_name%'
+  Message: '&6[&a+&6]&6 %player_name%'
 GlobalQuitMessage:
   Enabled: true
-  Message: '&6[&4-&6]&6 [&bGLOBAL&6] %player_name%'
+  Message: '&6[&4-&6]&6 %player_name%'

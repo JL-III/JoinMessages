@@ -9,7 +9,6 @@ import java.util.logging.Level;
 
 public final class JoinMessages extends Plugin {
 
-    // Config
     private final ConfigManager config;
 
     public JoinMessages() {
@@ -18,10 +17,9 @@ public final class JoinMessages extends Plugin {
 
     @Override
     public void onEnable() {
-        // Message
         getLogger().log(Level.INFO, "[#]==========< JoinMessagePlus >==========[#]");
         getLogger().log(Level.INFO, "Version: {0}", getDescription().getVersion());
-        // Events
+
         getProxy().getPluginManager().registerListener(this, new PlayerJoin(this));
         getProxy().getPluginManager().registerListener(this, new PlayerDisconnect(this));
     }

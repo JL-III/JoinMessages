@@ -17,11 +17,14 @@ public class PlayerJoin implements Listener {
 
     @EventHandler
     public void onJoin(PostLoginEvent e) {
-        if (e.getPlayer().hasPermission("joinmessageplus.silent")) {
+        if (e.getPlayer().hasPermission("join-messages.silent")) {
             return;
         }
         if (plugin.getConfig().isJoinMessageEnabled()) {
-            plugin.getProxy().broadcast(new TextComponent(plugin.getConfig().getJoinMessage().replace("%player_name%", e.getPlayer().getName()).replace("%player_displayname%", e.getPlayer().getDisplayName())));
+            plugin.getProxy().broadcast(
+                    new TextComponent(plugin.getConfig().getJoinMessage().replace("%player_name%",
+                            e.getPlayer().getName()).replace("%player_displayname%", e.getPlayer().getDisplayName()))
+            );
         }
     }
 
