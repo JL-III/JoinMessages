@@ -7,8 +7,6 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 import net.md_5.bungee.event.EventPriority;
 
-import java.util.concurrent.TimeUnit;
-
 public class PlayerDisconnect implements Listener {
 
     private JoinMessages plugin;
