@@ -5,6 +5,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.PlayerDisconnectEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
+import net.md_5.bungee.event.EventPriority;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +17,7 @@ public class PlayerDisconnect implements Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onLeave(PlayerDisconnectEvent e) {
         if (e.getPlayer().hasPermission("join-messages.silent")) {
             return;

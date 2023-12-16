@@ -17,7 +17,7 @@ public final class JoinMessages extends Plugin {
 
     @Override
     public void onEnable() {
-        getLogger().log(Level.INFO, "[#]==========< JoinMessagePlus >==========[#]");
+        getLogger().log(Level.INFO, "[#]==========< JoinMessages >==========[#]");
         getLogger().log(Level.INFO, "Version: {0}", getDescription().getVersion());
 
         getProxy().getPluginManager().registerListener(this, new PlayerJoin(this));
