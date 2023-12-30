@@ -22,7 +22,7 @@ public class PlayerDisconnect implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onLeave(PlayerDisconnectEvent event) {
         debugger.log("PlayerDisconnectEvent called for " + event.getPlayer().getName());
-        // here we will check the players uuid in the event to see if it matches the concurrent hashmap we created at startup.
+        // here we will check the players uuid in the event to see if it matches the concurrent list we created at startup.
         // if it does, then that means the player was not kicked, banned, or immediately disconnected. we can then proceed further with the quit message
         if (event.getPlayer().hasPermission("join-messages.silent")) {
             debugger.log("Removing " + event.getPlayer().getName() + " from disconnect notify list");
