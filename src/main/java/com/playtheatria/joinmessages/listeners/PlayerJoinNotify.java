@@ -26,6 +26,10 @@ public class PlayerJoinNotify implements Listener {
         // we will then add them to the disconnect notify list
         // the disconnect will verify that they have the correct permission to be notified, so that this class does not have to worry about that
         ProxiedPlayer player = ProxyServer.getInstance().getPlayer(event.getPlayerUUID());
+
+        debugger.log("Adding " + player.getName() + " to disconnect notify list");
+        plugin.getPlayerDisconnectNotify().add(player.getUniqueId());
+
         if (player.hasPermission("join-messages.silent")) {
             return;
         }
@@ -34,8 +38,6 @@ public class PlayerJoinNotify implements Listener {
                     new TextComponent(plugin.getConfigManager().getJoinMessage().replace("%player_name%",
                             player.getName()).replace("%player_displayname%", player.getDisplayName()))
             );
-            debugger.log("Adding " + player.getName() + " to disconnect notify list");
-            plugin.getPlayerDisconnectNotify().add(player.getUniqueId());
         }
     }
 }
