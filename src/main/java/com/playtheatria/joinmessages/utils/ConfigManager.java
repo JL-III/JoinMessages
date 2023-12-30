@@ -25,9 +25,9 @@ public class ConfigManager {
 
     private Configuration configuration;
 
-    private final String joinMessage;
+    private String joinMessage;
 
-    private final String quitMessage;
+    private String quitMessage;
 
     private boolean joinMessageEnabled;
 
@@ -87,6 +87,15 @@ public class ConfigManager {
     public void reloadConfig() {
         try {
             this.configuration = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
+
+            String JoinMessageFile = getConfig().getString("GlobalJoinMessage.Message");
+            assert JoinMessageFile != null;
+            joinMessage = JoinMessageFile.replace("&", "§");
+
+            String QuitMessageFile = getConfig().getString("GlobalQuitMessage.Message");
+            assert QuitMessageFile != null;
+            quitMessage = QuitMessageFile.replace("&", "§");
+
             joinMessageEnabled = getConfig().getBoolean("GlobalJoinMessage.Enabled");
             quitMessageEnabled = getConfig().getBoolean("GlobalQuitMessage.Enabled");
 
