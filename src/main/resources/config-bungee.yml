@@ -1,3 +1,5 @@
+debug: true
+
 GlobalJoinMessage:
   Enabled: true
   Message: '&6[&a+&6]&6 %player_name%'

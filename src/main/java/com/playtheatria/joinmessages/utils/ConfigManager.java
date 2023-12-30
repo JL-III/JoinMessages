@@ -19,6 +19,8 @@ public class ConfigManager {
 
     private final JoinMessages plugin;
 
+    private boolean debug;
+
     private final File file;
 
     private Configuration configuration;
@@ -27,9 +29,9 @@ public class ConfigManager {
 
     private final String quitMessage;
 
-    private final boolean joinMessageEnabled;
+    private boolean joinMessageEnabled;
 
-    private final boolean quitMessageEnabled;
+    private boolean quitMessageEnabled;
 
     public ConfigManager(JoinMessages plugin) {
         String name = "config";
@@ -66,6 +68,8 @@ public class ConfigManager {
 
         joinMessageEnabled = getConfig().getBoolean("GlobalJoinMessage.Enabled");
         quitMessageEnabled = getConfig().getBoolean("GlobalQuitMessage.Enabled");
+
+        debug = getConfig().getBoolean("debug");
     }
 
     public Configuration getConfig() {
@@ -83,6 +87,10 @@ public class ConfigManager {
     public void reloadConfig() {
         try {
             this.configuration = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
+            joinMessageEnabled = getConfig().getBoolean("GlobalJoinMessage.Enabled");
+            quitMessageEnabled = getConfig().getBoolean("GlobalQuitMessage.Enabled");
+
+            debug = getConfig().getBoolean("debug");
         } catch (IOException err) {
             plugin.getLogger().log(Level.WARNING, "Config: {0}", err);
         }
@@ -95,5 +103,7 @@ public class ConfigManager {
     public boolean isJoinMessageEnabled() { return joinMessageEnabled; }
 
     public boolean isQuitMessageEnabled() { return quitMessageEnabled; }
+
+    public boolean isDebug() { return debug; }
 
 }
