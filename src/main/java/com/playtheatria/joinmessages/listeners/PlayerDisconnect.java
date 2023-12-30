@@ -24,9 +24,10 @@ public class PlayerDisconnect implements Listener {
         debugger.log("PlayerDisconnectEvent called for " + event.getPlayer().getName());
         // here we will check the players uuid in the event to see if it matches the concurrent hashmap we created at startup.
         // if it does, then that means the player was not kicked, banned, or immediately disconnected. we can then proceed further with the quit message
+        debugger.log("Removing " + event.getPlayer().getName() + " from disconnect notify list");
+        plugin.getPlayerDisconnectNotify().remove(event.getPlayer().getUniqueId());
+
         if (event.getPlayer().hasPermission("join-messages.silent")) {
-            debugger.log("Removing " + event.getPlayer().getName() + " from disconnect notify list");
-            plugin.getPlayerDisconnectNotify().remove(event.getPlayer().getUniqueId());
             return;
         }
 
@@ -36,7 +37,5 @@ public class PlayerDisconnect implements Listener {
                             event.getPlayer().getName()).replace("%player_displayname%", event.getPlayer().getDisplayName()))
             );
         }
-        debugger.log("Removing " + event.getPlayer().getName() + " from disconnect notify list");
-        plugin.getPlayerDisconnectNotify().remove(event.getPlayer().getUniqueId());
     }
 }
