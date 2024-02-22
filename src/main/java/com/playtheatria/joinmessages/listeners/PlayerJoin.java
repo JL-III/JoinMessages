@@ -34,7 +34,7 @@ public class PlayerJoin implements Listener {
                     debugger.log("PlayerJoinNotifyEvent called for " + event.getPlayer().getName());
                 }
             }
-        }, 2000, TimeUnit.MILLISECONDS);
+        }, 5, TimeUnit.SECONDS);
     }
 
 }
